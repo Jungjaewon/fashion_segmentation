@@ -1,0 +1,46 @@
+
+MODEL_CONFIG:
+  IMG_SIZE: "512,320" # "600,400" #height, width
+
+TRAINING_CONFIG:
+
+  EPOCH: 300
+  DOMAIN : 'category' # category, color
+  BATCH_SIZE: 1
+
+  # lr and lambda
+  LR : 5e-6
+  LAMBDA_CLS  : 1.0
+
+  # Optimizer
+  OPTIM : ADAM
+  BETA1: 0.5
+  BETA2: 0.999
+
+  # Settings
+  NUM_WORKER : 4
+  MODE : 'train'
+  CPU_SEED : 123
+  GPU_SEED : 456
+  USE_TENSORBOARD : 'False' # 'True' or 'False'
+
+  # Directory
+  IMG_DIR : 'image' #'data'
+  TRAIN_DIR : 'category_segmentation_tutorial'
+  LOG_DIR : 'logs'
+  SAMPLE_DIR : 'samples'
+  RESULT_DIR : 'results'
+  MODEL_DIR : 'models'
+
+  # GPU
+  GPU: 0
+
+  # Step Size
+
+  SAMPLE_STEP : 1 # epoch based
+  LOG_STEP : 100 # iteration based
+  TEST_STEP : 5 # epoch based
+  SAVE_STEP : 5 # epoch based
+  SAVE_START : 10
+  LR_DECAY_STEP : 20
+
