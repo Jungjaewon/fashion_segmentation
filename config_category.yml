@@ -38,7 +38,7 @@ TRAINING_CONFIG:
   # Step Size
 
   SAMPLE_STEP : 1 # epoch based
-  LOG_STEP : 100 # iteration based
+  LOG_STEP : 50 # iteration based
   TEST_STEP : 5 # epoch based
   SAVE_STEP : 5 # epoch based
   SAVE_START : 10

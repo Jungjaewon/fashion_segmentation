@@ -188,6 +188,8 @@ class Solver(object):
             r[idx] = label_colors[l, 0]
             g[idx] = label_colors[l, 1]
             b[idx] = label_colors[l, 2]
+        print('decode_segmeap')
+        print(np.shape(r), np.shape(g), np.shape(b))
         rgb = np.stack([r, g, b], axis=2)
         return rgb
 
