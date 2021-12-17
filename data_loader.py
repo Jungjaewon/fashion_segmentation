@@ -42,7 +42,6 @@ class DataSet(data.Dataset):
             self.data_list = load_pickle(plk_path)
 
         print(f'num of data : {len(self.data_list)}')
-        print(f'type of data_list : {type(self.data_list)}')
 
     def transform_func(self, image, mask):
         # Resize
@@ -81,7 +80,7 @@ class DataSet(data.Dataset):
         #print(type(image), type(mask))
         #print(mask)
 
-        return image, mask
+        return image, mask.long()
 
     def __len__(self):
         """Return the number of images."""
