@@ -246,6 +246,7 @@ class Solver(object):
 
                     for image, mask in zip(fixed_image.split(self.batch_size, dim=0), fixed_mask.split(self.batch_size, dim=0)):
                         image, mask = image.to(self.gpu), mask.to(self.gpu)
+                        print(image.size(), mask.size())
                         out = self.model(image)
                         om = torch.argmax(out.squeeze(), dim=0).detach().cpu().numpy()
                         img_np = self.denorm(image).squeeze().detach().cpu().numpy()
