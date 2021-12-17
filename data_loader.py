@@ -74,6 +74,7 @@ class DataSet(data.Dataset):
         #print(type(image), type(mask))
         #print(mask)
         image, mask = self.transform_func(image, mask)
+        print(image.size(), mask.size())
         #print(type(image), type(mask))
         #print(mask)
 
