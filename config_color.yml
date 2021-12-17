@@ -6,7 +6,7 @@ TRAINING_CONFIG:
 
   EPOCH: 300
   DOMAIN : 'color' # category, color
-  BATCH_SIZE: 8
+  BATCH_SIZE: 16
 
   # lr and lambda
   LR : 5e-6
@@ -18,7 +18,7 @@ TRAINING_CONFIG:
   BETA2: 0.999
 
   # Settings
-  NUM_WORKER : 4
+  NUM_WORKER : 0
   MODE : 'train'
   CPU_SEED : 123
   GPU_SEED : 456
