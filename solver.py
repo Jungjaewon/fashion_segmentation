@@ -32,6 +32,12 @@ class Solver(object):
         self.color_cate = ['bk', 'beige', 'black', 'blue', 'brown',
                            'gray', 'green', 'orange', 'pink', 'purple',
                            'red', 'white', 'yellow']
+
+        if self.domain == 'category':
+            self.num_class = 23
+        elif self.domain == 'color':
+            self.num_class = 13
+
         # bgr
         self.color_rgb = np.array(
             [(255, 255, 255),# 0=background
@@ -172,7 +178,7 @@ class Solver(object):
         self.model.to(self.gpu)
         return epoch
 
-    def decode_segmap(self, image, nc=21):
+    def decode_segmap(self, image):
 
         if self.domain == 'category':
             label_colors = self.cloth_rgb
@@ -183,7 +189,7 @@ class Solver(object):
         g = np.zeros_like(image).astype(np.uint8)
         b = np.zeros_like(image).astype(np.uint8)
 
-        for l in range(0, nc):
+        for l in range(0, self.num_class):
             idx = image == l
             r[idx] = label_colors[l, 0]
             g[idx] = label_colors[l, 1]
