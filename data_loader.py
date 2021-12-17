@@ -49,9 +49,6 @@ class DataSet(data.Dataset):
         image = resize(image)
         mask = resize(mask.unsqueeze(0)).squeeze()
 
-        print(type(image))
-        print(mask.size())
-
         # Random horizontal flipping
         if random.random() > 0.5:
             image = TF.hflip(image)
@@ -79,6 +76,8 @@ class DataSet(data.Dataset):
         image, mask = self.transform_func(image, mask)
         #print(type(image), type(mask))
         #print(mask)
+
+        print(image.size(), mask.size())
 
         return image, mask.long()
 
