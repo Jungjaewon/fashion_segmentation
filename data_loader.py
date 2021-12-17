@@ -50,6 +50,9 @@ class DataSet(data.Dataset):
         image = resize(image)
         mask = resize(mask.unsqueeze(0)).squeeze()
 
+        print(image.size())
+        print(mask.size())
+
         # Random horizontal flipping
         if random.random() > 0.5:
             image = TF.hflip(image)
@@ -67,9 +70,9 @@ class DataSet(data.Dataset):
         image_name = data['img_name']
         mask = data['semseg']
 
-        print(os.path.exists(osp.join(self.img_dir, f'{image_name}')))
-        print(type(image_name))
-        print(type(mask))
+        #print(os.path.exists(osp.join(self.img_dir, f'{image_name}')))
+        #print(type(image_name))
+        #print(type(mask))
         image = Image.open(osp.join(self.img_dir, f'{image_name}')).convert('RGB')
         mask = torch.from_numpy(mask.astype(np.uint8)).long()
         #print(type(image), type(mask))
