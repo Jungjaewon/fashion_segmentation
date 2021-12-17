@@ -251,12 +251,11 @@ class Solver(object):
                         om = torch.argmax(out.squeeze(), dim=0).detach().cpu().numpy()
                         img_np = self.denorm(image).squeeze().detach().cpu().numpy()
                         img_np = img_np.astype(np.uint8) * 255
-                        print(np.shape(img_np))
                         img_np = np.transpose(img_np, (1, 2, 0))
-                        print(np.shape(img_np))
                         img_np[:, :, [0, 1, 2]] = img_np[:, :, [2, 1, 0]]
                         pred_rbg = self.decode_segmap(om)
                         mask_rbg = self.decode_segmap(mask.detach().cpu().numpy())
+                        print(np.shape(img_np), np.shape(mask_rbg), np.shape(pred_rbg))
                         concat_img = cv2.hconcat([img_np, mask_rbg, pred_rbg])
                         cv2.imwrite(osp.join(self.sample_dir, f'{epoch_str}_fixed_result.jpg'), concat_img)
 
