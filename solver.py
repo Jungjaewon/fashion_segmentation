@@ -204,6 +204,8 @@ class Solver(object):
         fixed_image = fixed_image.to(self.gpu)
         fixed_mask = fixed_mask.to(self.gpu)
 
+        print(fixed_image.size(), fixed_mask.size())
+
         start_epoch = self.restore_model()
         start_time = time.time()
         print('Start training...')

@@ -73,7 +73,6 @@ class DataSet(data.Dataset):
 
         image, mask = self.transform_func(image, mask)
 
-        print(image.size(), mask.size())
         return image, mask
 
     def __len__(self):
