@@ -72,6 +72,7 @@ class DataSet(data.Dataset):
         mask = torch.from_numpy(mask.astype(np.uint8)).long()
 
         image, mask = self.transform_func(image, mask)
+        print(type(image), type(mask))
 
         return image, mask
 
