@@ -244,7 +244,7 @@ class Solver(object):
                     z_f = len(str(self.epoch))
                     epoch_str = str(e + 1).zfill(z_f)
 
-                    for image, mask in zip(fixed_image.split(self.batch_size, dim=0), fixed_mask.split(self.batch_size, dim=0)):
+                    for image, mask in zip(fixed_image.chunk(self.batch_size, dim=0), fixed_mask.chunk(self.batch_size, dim=0)):
                         image, mask = image.to(self.gpu), mask.to(self.gpu)
                         print(image.size(), mask.size())
                         out = self.model(image)
