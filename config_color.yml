@@ -4,7 +4,7 @@ MODEL_CONFIG:
 
 TRAINING_CONFIG:
 
-  EPOCH: 300
+  EPOCH: 500
   DOMAIN : 'color' # category, color
   BATCH_SIZE: 16
 

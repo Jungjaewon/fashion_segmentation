@@ -244,10 +244,12 @@ class Solver(object):
 
                     z_f = len(str(self.epoch))
                     epoch_str = str(e + 1).zfill(z_f)
+                    sample_path = osp.join(self.sample_dir, epoch_str)
+                    os.makedirs(sample_path, exist_ok=True)
 
-                    for image, mask in zip(fixed_image.chunk(self.batch_size, dim=0), fixed_mask.chunk(self.batch_size, dim=0)):
+                    for i, data in enumerate(zip(fixed_image.chunk(self.batch_size, dim=0), fixed_mask.chunk(self.batch_size, dim=0))):
+                        image, mask = data
                         image, mask = image.to(self.gpu), mask.to(self.gpu)
-                        print(image.size(), mask.size())
                         out = self.model(image)
                         om = torch.argmax(out.squeeze(), dim=0).detach().cpu().numpy()
                         img_np = self.denorm(image).squeeze().detach().cpu().numpy()
@@ -256,9 +258,8 @@ class Solver(object):
                         img_np[:, :, [0, 1, 2]] = img_np[:, :, [2, 1, 0]]
                         pred_rbg = self.decode_segmap(om)
                         mask_rbg = self.decode_segmap(mask.detach().cpu().numpy())
-                        print(np.shape(img_np), np.shape(mask_rbg), np.shape(pred_rbg))
                         concat_img = cv2.hconcat([img_np, mask_rbg, pred_rbg])
-                        cv2.imwrite(osp.join(self.sample_dir, f'{epoch_str}_fixed_result.jpg'), concat_img)
+                        cv2.imwrite(osp.join(sample_path, f'{i}_fixed_result.jpg'), concat_img)
 
                     print('Saved real and fake images into {}...'.format(self.sample_dir))
 
