@@ -18,7 +18,7 @@ TRAINING_CONFIG:
   BETA2: 0.999
 
   # Settings
-  NUM_WORKER :
+  NUM_WORKER : 0
   MODE : 'train'
   CPU_SEED : 123
   GPU_SEED : 456
