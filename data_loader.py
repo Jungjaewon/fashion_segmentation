@@ -51,7 +51,6 @@ class DataSet(data.Dataset):
 
         # Random horizontal flipping
         if random.random() > 0.5:
-            print(' H Here')
             image = TF.hflip(image)
             mask = TF.hflip(mask)
 
@@ -59,7 +58,6 @@ class DataSet(data.Dataset):
         if random.random() > 0.5:
             image = TF.vflip(image)
             mask = TF.vflip(mask)
-            print(' V Here')
 
         return image, mask
 
