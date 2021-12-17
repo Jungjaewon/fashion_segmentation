@@ -77,9 +77,7 @@ class DataSet(data.Dataset):
         #print(type(image), type(mask))
         #print(mask)
 
-        print(image.size(), mask.size())
-
-        return image, mask.long()
+        return image.unsqueeze(0), mask.long().unsqueeze(0)
 
     def __len__(self):
         """Return the number of images."""
