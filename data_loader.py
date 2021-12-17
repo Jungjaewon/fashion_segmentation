@@ -23,6 +23,7 @@ class DataSet(data.Dataset):
 
     def __init__(self, config, transform, mode):
 
+
         assert mode in ['train', 'test']
         self.transform = transform
         self.mode = mode
@@ -31,8 +32,9 @@ class DataSet(data.Dataset):
         self.H, self.W = int(self.H), int(self.W)
         self.img_size = (self.H, self.W, 3)
         self.domain = config['TRAINING_CONFIG']['DOMAIN']
+        print(f'domain : {self.domain}')
+        #self.data_list = glob.glob(os.path.join(self.img_dir, '*.jpg'))
 
-        self.data_list = glob.glob(os.path.join(self.img_dir, '*.jpg'))
         if self.domain == 'category':
             plk_path = osp.join('label', f'category_segment_{self.mode}.plk')
             self.data_list = load_pickle(plk_path)
