@@ -280,6 +280,9 @@ class Solver(object):
         z_f = len(str(self.epoch))
         epoch_str = str(epoch).zfill(z_f)
 
+        result_path = osp.join(self.result_dir, epoch_str)
+        os.makedirs(result_path, exist_ok=True)
+
         with torch.no_grad():
             for i, data in enumerate(data_loader):
                 image, mask = data
@@ -287,13 +290,13 @@ class Solver(object):
                 out = self.model(image)
                 om = torch.argmax(out.squeeze(), dim=0).detach().cpu().numpy()
                 img_np = self.denorm(image).squeeze().detach().cpu().numpy()
-                img_np = img_np.astype(np.uint8) * 255
-                img_np = np.transpose(img_np, (1, 2, 0))
+                img_np = img_np * 255
+                img_np = np.transpose(img_np, (1, 2, 0)).astype(np.uint8)
                 img_np[:, :, [0, 1, 2]] = img_np[:, :, [2, 1, 0]]
                 pred_rbg = self.decode_segmap(om)
                 mask_rbg = self.decode_segmap(mask.detach().cpu().numpy())
                 concat_img = cv2.hconcat([img_np, mask_rbg, pred_rbg])
-                cv2.imwrite(osp.join(self.result_dir, f'{mode}_{epoch_str}_{i}_result.jpg'), concat_img)
+                cv2.imwrite(osp.join(result_path, f'{i}_result.jpg'), concat_img)
 
 
 
