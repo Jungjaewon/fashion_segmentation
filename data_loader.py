@@ -69,8 +69,10 @@ class DataSet(data.Dataset):
         image = Image.open(osp.join(self.img_dir, f'{image_name}')).convert('RGB')
         mask = torch.from_numpy(mask.astype(np.uint8)).long()
         print(type(image), type(mask))
+        print(mask)
         image, mask = self.transform_func(image, mask)
         print(type(image), type(mask))
+        print(mask)
 
         return image, mask
 
