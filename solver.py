@@ -258,6 +258,7 @@ class Solver(object):
                         #img_np[:, :, [0, 1, 2]] = img_np[:, :, [2, 1, 0]]
                         pred_rbg = self.decode_segmap(om)
                         mask_rbg = self.decode_segmap(mask.detach().cpu().numpy())
+                        print(np.shape(img_np), np.shape(mask_rbg), np.shape(pred_rbg))
                         concat_img = cv2.hconcat([img_np, mask_rbg, pred_rbg])
                         cv2.imwrite(osp.join(sample_path, f'{i}_fixed_result.jpg'), concat_img)
 
