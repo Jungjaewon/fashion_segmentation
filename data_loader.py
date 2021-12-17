@@ -68,13 +68,12 @@ class DataSet(data.Dataset):
         image_name = data['img_name']
         mask = data['semseg']
 
-        print(f'data {data}')
-        print(osp.join(self.img_dir, f'{image_name}'))
-
         image = Image.open(osp.join(self.img_dir, f'{image_name}')).convert('RGB')
         mask = torch.from_numpy(mask.astype(np.uint8)).long()
 
         image, mask = self.transform_func(image, mask)
+
+        print(image.size(), mask.size())
         return image, mask
 
     def __len__(self):
