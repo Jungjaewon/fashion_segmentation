@@ -42,6 +42,7 @@ class DataSet(data.Dataset):
             self.data_list = load_pickle(plk_path)
 
         print(f'num of data : {len(self.data_list)}')
+        print(f'type of data_list : {type(self.data_list)}')
 
     def transform_func(self, image, mask):
         # Resize
