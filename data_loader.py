@@ -50,7 +50,7 @@ class DataSet(data.Dataset):
         image = resize(image)
         mask = resize(mask.unsqueeze(0)).squeeze()
 
-        print(image.size())
+        print(type(image))
         print(mask.size())
 
         # Random horizontal flipping
