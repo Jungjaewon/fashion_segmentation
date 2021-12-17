@@ -189,6 +189,7 @@ class Solver(object):
             g[idx] = label_colors[l, 1]
             b[idx] = label_colors[l, 2]
         rgb = np.stack([r, g, b], axis=0)
+        print(f'rgb : {np.shape(rgb)}')
         return np.transpose(rgb, (1, 2, 0))
 
     def train(self):
