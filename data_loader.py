@@ -46,7 +46,7 @@ class DataSet(data.Dataset):
     def transform_func(self, image, mask):
         # Resize
         resize = T.Resize((self.H, self.W))
-        image = resize(image)
+        image = self.transform(resize(image))
         mask = resize(mask.unsqueeze(0)).squeeze()
 
         # Random horizontal flipping
@@ -61,7 +61,7 @@ class DataSet(data.Dataset):
             mask = TF.vflip(mask)
             print(' V Here')
 
-        return self.transform(image), mask
+        return image, mask
 
     def __getitem__(self, index):
         data = self.data_list[index]
