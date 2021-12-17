@@ -255,7 +255,7 @@ class Solver(object):
                         img_np = self.denorm(image).squeeze().detach().cpu().numpy()
                         img_np = img_np.astype(np.uint8) * 255
                         img_np = np.transpose(img_np, (1, 2, 0))
-                        #img_np[:, :, [0, 1, 2]] = img_np[:, :, [2, 1, 0]]
+                        img_np[:, :, [0, 1, 2]] = img_np[:, :, [2, 1, 0]]
                         pred_rbg = self.decode_segmap(om)
                         mask_rbg = self.decode_segmap(mask.detach().cpu().numpy())
                         #print(np.shape(img_np), np.shape(mask_rbg), np.shape(pred_rbg))
