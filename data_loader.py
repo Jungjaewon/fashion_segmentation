@@ -23,7 +23,6 @@ class DataSet(data.Dataset):
 
     def __init__(self, config, transform, mode):
 
-
         assert mode in ['train', 'test']
         self.transform = transform
         self.mode = mode
@@ -43,7 +42,6 @@ class DataSet(data.Dataset):
             self.data_list = load_pickle(plk_path)
 
         print(f'num of data : {len(self.data_list)}')
-
 
     def transform_func(self, image, mask):
         # Resize
@@ -70,8 +68,9 @@ class DataSet(data.Dataset):
 
         image = Image.open(osp.join(self.img_dir, f'{image_name}')).convert('RGB')
         mask = torch.from_numpy(mask.astype(np.uint8)).long()
-
+        print(type(image), type(mask))
         image, mask = self.transform_func(image, mask)
+        print(type(image), type(mask))
 
         return image, mask
 
