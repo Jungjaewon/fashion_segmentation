@@ -51,6 +51,7 @@ class DataSet(data.Dataset):
 
         # Random horizontal flipping
         if random.random() > 0.5:
+            print(' H Here')
             image = TF.hflip(image)
             mask = TF.hflip(mask)
 
@@ -58,6 +59,7 @@ class DataSet(data.Dataset):
         if random.random() > 0.5:
             image = TF.vflip(image)
             mask = TF.vflip(mask)
+            print(' V Here')
 
         return self.transform(image), mask
 
@@ -77,7 +79,7 @@ class DataSet(data.Dataset):
         #print(type(image), type(mask))
         #print(mask)
 
-        return image.unsqueeze(0), mask.long().unsqueeze(0)
+        return image, mask.long()
 
     def __len__(self):
         """Return the number of images."""
