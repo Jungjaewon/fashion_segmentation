@@ -6,7 +6,7 @@ TRAINING_CONFIG:
 
   EPOCH: 300
   DOMAIN : 'category' # category, color
-  BATCH_SIZE: 8
+  BATCH_SIZE: 4
 
   # lr and lambda
   LR : 5e-6
