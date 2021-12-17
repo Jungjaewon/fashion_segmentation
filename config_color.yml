@@ -5,7 +5,7 @@ MODEL_CONFIG:
 TRAINING_CONFIG:
 
   EPOCH: 300
-  DOMAIN : 'category' # category, color
+  DOMAIN : 'color' # category, color
   BATCH_SIZE: 8
 
   # lr and lambda
@@ -26,14 +26,14 @@ TRAINING_CONFIG:
 
   # Directory
   IMG_DIR : 'image' #'data'
-  TRAIN_DIR : 'category_segmentation_tutorial'
+  TRAIN_DIR : 'color_segmentation_tutorial'
   LOG_DIR : 'logs'
   SAMPLE_DIR : 'samples'
   RESULT_DIR : 'results'
   MODEL_DIR : 'models'
 
   # GPU
-  GPU: 0
+  GPU: 1
 
   # Step Size
 
