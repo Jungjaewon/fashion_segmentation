@@ -32,7 +32,7 @@ class DataSet(data.Dataset):
         self.H, self.W = int(self.H), int(self.W)
         self.img_size = (self.H, self.W, 3)
         self.domain = config['TRAINING_CONFIG']['DOMAIN']
-        print(f'domain : {self.domain}')
+        print(f'mode : {self.mode}, domain : {self.domain}')
         #self.data_list = glob.glob(os.path.join(self.img_dir, '*.jpg'))
 
         if self.domain == 'category':
@@ -41,6 +41,9 @@ class DataSet(data.Dataset):
         elif self.domain == 'color':
             plk_path = osp.join('label', f'color_segment_{self.mode}.plk')
             self.data_list = load_pickle(plk_path)
+
+        print(f'num of data : {len(self.data_list)}')
+
 
     def transform_func(self, image, mask):
         # Resize
