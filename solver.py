@@ -9,6 +9,7 @@ import numpy as np
 import cv2
 
 from model import Unet
+from focal_loss import FocalLoss
 from torchvision.utils import save_image
 from data_loader import get_loader
 
@@ -95,7 +96,8 @@ class Solver(object):
         #torch.manual_seed(config['TRAINING_CONFIG']['CPU_SEED'])
         #torch.cuda.manual_seed_all(config['TRAINING_CONFIG']['GPU_SEED'])
 
-        self.loss = nn.CrossEntropyLoss()
+        #self.loss = nn.CrossEntropyLoss()
+        self.loss = FocalLoss(gamma=1.0)
 
         self.gpu = config['TRAINING_CONFIG']['GPU']
         self.use_tensorboard = config['TRAINING_CONFIG']['USE_TENSORBOARD']
