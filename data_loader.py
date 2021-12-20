@@ -50,12 +50,13 @@ class DataSet(data.Dataset):
         mask = resize(mask.unsqueeze(0)).squeeze()
 
         # Random horizontal flipping
-        if random.random() > 0.5:
-            image, mask = TF.hflip(image), TF.hflip(mask)
+        if self.mode == 'train':
+            if random.random() > 0.5:
+                image, mask = TF.hflip(image), TF.hflip(mask)
 
-        # Random vertical flipping
-        if random.random() > 0.5:
-            image, mask = TF.vflip(image), TF.vflip(mask)
+            # Random vertical flipping
+            if random.random() > 0.5:
+                image, mask = TF.vflip(image), TF.vflip(mask)
 
         return image, mask
 
