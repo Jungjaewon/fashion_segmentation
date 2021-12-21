@@ -26,7 +26,7 @@ TRAINING_CONFIG:
 
   # Directory
   IMG_DIR : 'image' #'data'
-  TRAIN_DIR : 'category_segmentation_tutorial_5e-5_focal'
+  TRAIN_DIR : 'category_segmentation_tutorial_5e-5_focal_k3'
   LOG_DIR : 'logs'
   SAMPLE_DIR : 'samples'
   RESULT_DIR : 'results'
