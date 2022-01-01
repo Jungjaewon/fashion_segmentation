@@ -19,8 +19,14 @@ Not implmented yet
 ```
 
 ## Results
-![edge2color](img/edge2color.jpg)
-![color2edge](img/color2edge.jpg)
+### Category
+![edge2color](img/4_result_cate.jpg)
+### Color
+![color2edge](img/53_result_color.jpg)
+
+## Comments
+The result is not good because dataset is small and unet is simple. Deeplab-v3 and other network is recommended. 
+
 
 ## Reference
 1. unet : https://github.com/milesial/Pytorch-UNet
